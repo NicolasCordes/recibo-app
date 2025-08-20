@@ -2,6 +2,7 @@
   "name": "recibo-app",
   "version": "0.0.0",
   "scripts": {
+    "electron": "npx electron .",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -9,6 +10,7 @@
     "test": "ng test",
     "serve:ssr:recibo-app": "node dist/recibo-app/server/server.mjs"
   },
+  "main": "main.js",
   "prettier": {
     "overrides": [
       {
@@ -30,6 +32,8 @@
     "@angular/router": "^20.1.0",
     "@angular/ssr": "^20.1.1",
     "express": "^5.1.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -39,8 +43,10 @@
     "@angular/cli": "^20.1.1",
     "@angular/compiler-cli": "^20.1.0",
     "@types/express": "^5.0.1",
+    "@types/html2canvas": "^0.5.35",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
+    "electron": "^37.2.5",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

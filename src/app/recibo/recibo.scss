@@ -1,0 +1,138 @@
+.recibo {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 25px;
+  border: 2px solid #4b0082;
+  background-color: #fff;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+  .recibo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #4b0082;
+    padding-bottom: 15px;
+
+    .recibo-logo img {
+      max-height: 70px;
+    }
+
+    .recibo-company {
+      text-align: right;
+      h1 {
+        margin: 0;
+        color: #4b0082;
+        font-size: 24px;
+      }
+      p {
+        margin: 2px 0;
+        font-size: 12px;
+        color: #555;
+      }
+    }
+  }
+
+  .recibo-title {
+    text-align: center;
+    margin: 20px 0;
+    h2 {
+      background: #4b0082;
+      color: #fff;
+      padding: 10px 20px;
+      display: inline-block;
+      border-radius: 6px;
+      font-size: 18px;
+    }
+  }
+
+  .recibo-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 14px;
+
+    strong {
+      color: #4b0082;
+    }
+  }
+
+  .recibo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+    th, td {
+      border: 1px solid #4b0082;
+      padding: 10px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background-color: #4b0082;
+      color: #fff;
+    }
+
+    td[colspan="2"] {
+      text-align: left;
+      font-style: italic;
+      color: #444;
+    }
+  }
+
+  .recibo-footer {
+    border-top: 2px solid #4b0082;
+    padding-top: 15px;
+    text-align: right;
+    font-size: 14px;
+
+    strong {
+      font-size: 16px;
+      color: #4b0082;
+    }
+  }
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #4b0082;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3a0069;
+  }
+}
+
+.recibo-form {
+  max-width: 500px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  label {
+    font-weight: bold;
+    margin-top: 5px;
+    color: #4b0082;
+  }
+
+  input, textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}

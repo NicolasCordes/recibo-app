@@ -1,0 +1,127 @@
+<div id="recibo-content" class="recibo">
+  <div class="recibo-header">
+    <div class="recibo-logo">
+      <img src="wings.jpeg" alt="Logo" />
+    </div>
+    <div class="recibo-company">
+      <h1>CCA WINGS EVOLUTION</h1>
+      <p>Av. Constitución 9050/Av. Independencia 3030 - Mar Del Plata</p>
+      <p>Tel: +54 223 595-6593</p>
+      <p>Email: Centroculturalalas2020&#64;gmail.com</p>
+    </div>
+  </div>
+
+  <div class="recibo-title">
+    <h2>RECIBO DE PAGO</h2>
+  </div>
+
+  <div class="recibo-info">
+    <div>
+      <p><strong>Sede:</strong> {{ reciboForm.get('sede')?.value }}</p>
+      <p><strong>Fecha:</strong> {{ reciboForm.get('fecha')?.value }}</p>
+    </div>
+    <div>
+      <p><strong>N° Recibo:</strong> {{ numeroRecibo | number:'3.0' }}</p>
+      <p><strong>Emitido a:</strong> {{ reciboForm.get('de')?.value }}</p>
+    </div>
+  </div>
+
+  <table class="recibo-table">
+    <thead>
+      <tr>
+        <th>Concepto</th>
+        <th>Detalle</th>
+        <th>Importe</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Por</td>
+        <td>{{ reciboForm.get('por')?.value }}</td>
+        <td>{{ reciboForm.get('importe')?.value }} $</td>
+      </tr>
+      <tr>
+        <td>Tipo de pago</td>
+        <td>{{ reciboForm.get('tipo')?.value }}</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Observación</td>
+        <td colspan="2">{{ reciboForm.get('observacion')?.value }}</td>
+      </tr>
+      <tr>
+        <td>Comentarios</td>
+        <td colspan="2">{{ reciboForm.get('comentarios')?.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="recibo-footer">
+    <p><strong>Total: {{ reciboForm.get('importe')?.value }} $</strong></p>
+  </div>
+</div>
+
+<!-- Botón para exportar -->
+<button (click)="generatePDF()" [disabled]="reciboForm.invalid">Generar PDF</button>
+
+<!-- Formulario reactivo -->
+<form [formGroup]="reciboForm" class="recibo-form">
+
+  <label>Sede:</label>
+  <select formControlName="sede">
+    <option value="">-- Seleccioná una sede --</option>
+    <option value="Av. Constitución 9050">Sede Constitución</option>
+    <option value="Av.Independencia 3030">Sede Kimberley</option>
+  </select>
+
+  @if (reciboForm.get('sede')?.hasError('required')) {
+  <p style="color: red;">Campo obligatorio</p>
+  }
+
+
+  <label>Fecha:</label>
+  <input type="date" formControlName="fecha" />
+  @if (reciboForm.get('fecha')?.hasError('required')) {
+  <p style="color: red;">Campo obligatorio</p>
+  }
+
+  <label>Emitido a (De):</label>
+  <input type="text" formControlName="de" />
+  @if (reciboForm.get('de')?.hasError('required') && reciboForm.get('de')?.touched) {
+  <p style="color: red;">Campo obligatorio</p>
+  }
+
+  <label>Importe:</label>
+  <input type="number" formControlName="importe" />
+  @if (reciboForm.get('importe')?.hasError('required') && reciboForm.get('importe')?.touched) {
+  <p style="color: red;">Campo obligatorio</p>
+  }
+  @if (reciboForm.get('importe')?.hasError('min') && reciboForm.get('importe')?.touched) {
+  <p style="color: red;">Debe ser un número positivo</p>
+  }
+
+  <label>Por concepto de:</label>
+  <input type="text" formControlName="por" />
+  @if (reciboForm.get('por')?.hasError('required') && reciboForm.get('por')?.touched) {
+  <p style="color: red;">Campo obligatorio</p>
+  }
+
+  <label>Tipo de pago:</label>
+  <input type="text" formControlName="tipo" />
+  @if (reciboForm.get('tipo')?.hasError('required') && reciboForm.get('tipo')?.touched) {
+  <p style="color: red;">Campo obligatorio</p>
+  }
+
+  <label>Observación:</label>
+  <input type="text" formControlName="observacion" />
+  @if (reciboForm.get('observacion')?.hasError('maxlength')) {
+  <p style="color: red;">Máximo 70 caracteres permitidos</p>
+  }
+
+  <label>Comentarios:</label>
+  <input type="text" formControlName="comentarios" />
+  @if (reciboForm.get('comentarios')?.hasError('maxlength')) {
+  <p style="color: red;">Máximo 70 caracteres permitidos</p>
+  }
+
+</form>
