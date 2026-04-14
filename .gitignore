@@ -40,3 +40,18 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Electron build output
+/release
+/dist-electron
+win-unpacked/
+win-ia32-unpacked/
+linux-unpacked/
+mac/
+*.pak
+*.bin
+*.dll
+*.dat
+*.exe
+*.AppImage
+*.dmg

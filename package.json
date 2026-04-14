@@ -1,27 +1,18 @@
 {
   "name": "recibo-app",
   "version": "0.0.0",
+  "main": "main.js",
+  "private": true,
   "scripts": {
-    "electron": "npx electron .",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:recibo-app": "node dist/recibo-app/server/server.mjs"
+    "serve:ssr:recibo-app": "node dist/recibo-app/server/server.mjs",
+    "electron": "electron .",
+    "start:electron": "npm run build && electron .",
+    "build:exe": "npm run build && electron-builder"
   },
-  "main": "main.js",
-  "prettier": {
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
-        }
-      }
-    ]
-  },
-  "private": true,
   "dependencies": {
     "@angular/common": "^20.1.0",
     "@angular/compiler": "^20.1.0",
@@ -46,7 +37,8 @@
     "@types/html2canvas": "^0.5.35",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
-    "electron": "^37.2.5",
+    "electron": "^37.10.3",
+    "electron-builder": "^24.6.0",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -54,5 +46,21 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.8.2"
+  },
+  "build": {
+    "appId": "com.miempresa.reciboapp",
+    "productName": "Wings Evolution Recibos",
+    "icon": "src/assets/wings.ico",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    }
   }
 }
