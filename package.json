@@ -48,19 +48,25 @@
     "typescript": "~5.8.2"
   },
   "build": {
-    "appId": "com.miempresa.reciboapp",
-    "productName": "Wings Evolution Recibos",
-    "icon": "src/assets/wings.ico",
-    "directories": {
-      "output": "release"
-    },
-    "files": [
-      "dist/**/*",
-      "main.js",
-      "package.json"
-    ],
-    "win": {
-      "target": "nsis"
+  "appId": "com.miempresa.reciboapp",
+  "productName": "Wings Evolution Recibos",
+  "icon": "src/assets/wings.ico",
+  "directories": {
+    "output": "release"
+  },
+  "files": [
+    "dist/**/*",
+    "main.js",
+    "package.json"
+  ],
+  "extraResources": [
+    {
+      "from": "src/assets/",
+      "to": "assets/"
     }
+  ],
+  "win": {
+    "target": "nsis"
   }
+}
 }
